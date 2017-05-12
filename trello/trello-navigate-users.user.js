@@ -12,6 +12,16 @@ window.addEventListener('load', () => {
   const nextButton = $('<a class="board-header-btn board-header-btn-filter-indicator">Next User</a>');
   const userIndicator = $('<a class="board-header-btn"></a>');
   const prevButton = $('<a class="board-header-btn board-header-btn-filter-indicator">Prev User</a>');
+  const easterEgg = $('<img src="#" style="position: fixed; bottom: 15px; left: 5px;">');
+
+  function easterIsHere(name) {
+    if (name.includes('peter_mahnke')) {
+      easterEgg.attr('src', 'https://pldh.net/media/pokemon/shuffle/056.png');
+      $('.board-header-btn.perms-btn').after(easterEgg);
+    } else {
+      easterEgg.remove();
+    }
+  }
 
   function resetFilter() {
     let activeExists = false;
@@ -31,6 +41,7 @@ window.addEventListener('load', () => {
       resetFilter();
       next = $(`.js-mem-list .js-member-item:nth('${i}') a`);
       userIndicator.text(next.text());
+      easterIsHere(next.text());
       next.click();
     }
     return false;
@@ -74,4 +85,5 @@ window.addEventListener('load', () => {
   prevButton.click(prevUser);
   $('.board-header-btn.perms-btn').after(userIndicator);
   $('.board-header-btn.calendar-btn').before(prevButton, nextButton);
+  changeUser(getCurrentUserIndex())
 }, false);
