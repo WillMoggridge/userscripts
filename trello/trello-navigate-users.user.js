@@ -3,7 +3,7 @@
 // @namespace will@moggridge.com
 // @description Navigate users on Trello with some simple controls.
 // @license LGPL-3.0
-// @version 1
+// @version 1.1
 // @include https://trello.com/b/*
 // @grant none
 // ==/UserScript==
